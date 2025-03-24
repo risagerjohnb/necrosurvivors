@@ -59,6 +59,10 @@ wait_time = 1.5
 [node name="MagicSwordAttackTimer" type="Timer" parent="Attack/MagicSwordTimer"]
 wait_time = 0.075
 
+[node name="LightningTimer" type="Timer" parent="Attack"]
+
+[node name="LightningTimerAttackTimer" type="Timer" parent="Attack/LightningTimer"]
+
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
@@ -71,6 +75,8 @@ debug_color = Color(0.449377, 0.552847, 0.616355, 0.42)
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/MagicSwordTimer" to="." method="_on_magic_sword_timer_timeout"]
 [connection signal="timeout" from="Attack/MagicSwordTimer/MagicSwordAttackTimer" to="." method="_on_magic_sword_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/LightningTimer" to="." method="_on_lightning_timer_timeout"]
+[connection signal="timeout" from="Attack/LightningTimer/LightningTimerAttackTimer" to="." method="_on_lightning_timer_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 

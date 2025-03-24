@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bceyd7as4miyj"]
+
+[ext_resource type="Script" path="res://scenes/lightning_strike.gd" id="1_7qbfp"]
+[ext_resource type="Texture2D" uid="uid://dee8yn7xf0mi2" path="res://assets/Spritesheets/Eletric A-Sheet.png" id="2_0rnpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbo0o"]
+size = Vector2(62, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0bbt"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3b4w"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laduv"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_libi7"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk3r2"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhmpt"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5ov5"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r6le"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxo2x"]
+atlas = ExtResource("2_0rnpf")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur5fl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0bbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3b4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laduv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_libi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk3r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhmpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5ov5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r6le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxo2x")
+}],
+"loop": true,
+"name": &"strike",
+"speed": 5.0
+}]
+
+[node name="LightningStrike" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_7qbfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -4)
+shape = SubResource("RectangleShape2D_rbo0o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ur5fl")
+animation = &"strike"
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
