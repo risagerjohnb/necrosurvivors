@@ -1,0 +1,186 @@
+[gd_scene load_steps=39 format=3 uid="uid://wmojp7ok7mpj"]
+
+[ext_resource type="Texture2D" uid="uid://dbpo5esnguspi" path="res://assets/32rogues-0.5.0/32rogues/monsters.png" id="1_ncpvq"]
+[ext_resource type="Script" path="res://scenes/rat.gd" id="1_tweqo"]
+[ext_resource type="PackedScene" uid="uid://bce8wv70ct6us" path="res://scenes/Utility/hurt_box.tscn" id="3_xorhh"]
+[ext_resource type="PackedScene" uid="uid://cbtsk01mnm2ow" path="res://scenes/Utility/hit_box.tscn" id="4_wkxx7"]
+[ext_resource type="Texture2D" uid="uid://7u5xyybpdpx7" path="res://assets/NEw pack blood/1/1_0.png" id="5_o6v1n"]
+[ext_resource type="Texture2D" uid="uid://bgmxkj1w660cb" path="res://assets/NEw pack blood/1/1_1.png" id="6_pvkxm"]
+[ext_resource type="Texture2D" uid="uid://bbe4t2klvdhyu" path="res://assets/NEw pack blood/1/1_2.png" id="7_1ek43"]
+[ext_resource type="Texture2D" uid="uid://6nksaqr4j4bd" path="res://assets/NEw pack blood/1/1_3.png" id="8_esqv4"]
+[ext_resource type="Texture2D" uid="uid://csv6cr2ocf1b7" path="res://assets/NEw pack blood/1/1_4.png" id="9_0jleh"]
+[ext_resource type="Texture2D" uid="uid://bqe03x8a4yrtc" path="res://assets/NEw pack blood/1/1_5.png" id="10_6g0v6"]
+[ext_resource type="Texture2D" uid="uid://pckeaod0e0eh" path="res://assets/NEw pack blood/1/1_6.png" id="11_4nso7"]
+[ext_resource type="Texture2D" uid="uid://dougbyr2r4wvs" path="res://assets/NEw pack blood/1/1_7.png" id="12_2iwrt"]
+[ext_resource type="Texture2D" uid="uid://cw445jp3dxj8i" path="res://assets/NEw pack blood/1/1_8.png" id="13_ocpky"]
+[ext_resource type="Texture2D" uid="uid://dthuq7ho18bth" path="res://assets/NEw pack blood/1/1_9.png" id="14_slj11"]
+[ext_resource type="Texture2D" uid="uid://du8205atucvep" path="res://assets/NEw pack blood/1/1_10.png" id="15_k3olw"]
+[ext_resource type="Texture2D" uid="uid://dxte44c4uyd1x" path="res://assets/NEw pack blood/1/1_11.png" id="16_rl72c"]
+[ext_resource type="Texture2D" uid="uid://cambj74aufafw" path="res://assets/NEw pack blood/1/1_12.png" id="17_1mgql"]
+[ext_resource type="Texture2D" uid="uid://c247tn868wxl3" path="res://assets/NEw pack blood/1/1_13.png" id="18_bc7k7"]
+[ext_resource type="Texture2D" uid="uid://dbijclxr5oyh7" path="res://assets/NEw pack blood/1/1_14.png" id="19_ulxvl"]
+[ext_resource type="Texture2D" uid="uid://bqhhqw6k6i88u" path="res://assets/NEw pack blood/1/1_15.png" id="20_h6uke"]
+[ext_resource type="Texture2D" uid="uid://darxme5t5xmhi" path="res://assets/NEw pack blood/1/1_16.png" id="21_hdoo4"]
+[ext_resource type="Texture2D" uid="uid://c8lyakljfek87" path="res://assets/NEw pack blood/1/1_17.png" id="22_5tqfd"]
+[ext_resource type="Texture2D" uid="uid://dgsadatj0ilh4" path="res://assets/NEw pack blood/1/1_18.png" id="23_5qkxw"]
+[ext_resource type="Texture2D" uid="uid://cgupbwuognnf" path="res://assets/NEw pack blood/1/1_19.png" id="24_n3gk1"]
+[ext_resource type="Texture2D" uid="uid://bo7xq00y4gh0t" path="res://assets/NEw pack blood/1/1_20.png" id="25_futha"]
+[ext_resource type="Texture2D" uid="uid://b2whmgd228dou" path="res://assets/NEw pack blood/1/1_21.png" id="26_itmeo"]
+[ext_resource type="Texture2D" uid="uid://bovx067owe1sh" path="res://assets/NEw pack blood/1/1_22.png" id="27_0qjcf"]
+[ext_resource type="Texture2D" uid="uid://cg74jk4e8jf78" path="res://assets/NEw pack blood/1/1_23.png" id="28_qw3em"]
+[ext_resource type="Texture2D" uid="uid://cmsfnyv7kify2" path="res://assets/NEw pack blood/1/1_24.png" id="29_8apew"]
+[ext_resource type="Texture2D" uid="uid://ch04eyxjlpaij" path="res://assets/NEw pack blood/1/1_25.png" id="30_81bje"]
+[ext_resource type="Texture2D" uid="uid://cjdxw7gefhowm" path="res://assets/NEw pack blood/1/1_26.png" id="31_0pyfk"]
+[ext_resource type="Texture2D" uid="uid://g51fr7bcer4u" path="res://assets/NEw pack blood/1/1_27.png" id="32_ghli6"]
+[ext_resource type="Texture2D" uid="uid://d08187oixbdga" path="res://assets/NEw pack blood/1/1_28.png" id="33_82l6t"]
+[ext_resource type="Texture2D" uid="uid://bbkmj8oa74teu" path="res://assets/NEw pack blood/1/1_29.png" id="34_k0724"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owvtf"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekoun"]
+size = Vector2(36, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vioto"]
+size = Vector2(30, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hi4io"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o6v1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pvkxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1ek43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_esqv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0jleh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6g0v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4nso7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2iwrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ocpky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_slj11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k3olw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rl72c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1mgql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bc7k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ulxvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h6uke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hdoo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5tqfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5qkxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_n3gk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_futha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_itmeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_0qjcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_qw3em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_8apew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_81bje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_0pyfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ghli6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_82l6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_k0724")
+}],
+"loop": false,
+"name": &"death",
+"speed": 60.0
+}]
+
+[node name="Rat" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_tweqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ncpvq")
+region_enabled = true
+region_rect = Rect2(352, 200, 32, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_owvtf")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_xorhh")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ekoun")
+debug_color = Color(0.983051, 0.0736686, 0.272113, 0.42)
+
+[node name="HitBox" parent="." instance=ExtResource("4_wkxx7")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_vioto")
+
+[node name="BloodAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hi4io")
+animation = &"death"
+frame = 29
+frame_progress = 1.0
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

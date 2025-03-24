@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccygpdkftb6sq"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_o8hfr"]
+[ext_resource type="Texture2D" uid="uid://d0slwygb5hksc" path="res://assets/32rogues-0.5.0/32rogues/rogues.png" id="1_rrewk"]
+[ext_resource type="PackedScene" uid="uid://bce8wv70ct6us" path="res://scenes/Utility/hurt_box.tscn" id="3_6luhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmdo"]
+size = Vector2(11, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfuim"]
+size = Vector2(13, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hqpa"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgkus"]
+bg_color = Color(0, 0.556863, 0.247059, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7bhf"]
+radius = 514.016
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_o8hfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rrewk")
+region_enabled = true
+region_rect = Rect2(168, 64, 24, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+shape = SubResource("RectangleShape2D_rfmdo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.3, 1.3)
+
+[node name="HurtBox" parent="." instance=ExtResource("3_6luhu")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-3, 2)
+shape = SubResource("RectangleShape2D_mfuim")
+
+[node name="Hp_Bar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -31.0
+offset_right = 23.0
+offset_bottom = -21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0hqpa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dgkus")
+show_percentage = false
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="MagicSwordTimer" type="Timer" parent="Attack"]
+wait_time = 1.5
+
+[node name="MagicSwordAttackTimer" type="Timer" parent="Attack/MagicSwordTimer"]
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_y7bhf")
+debug_color = Color(0.449377, 0.552847, 0.616355, 0.42)
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attack/MagicSwordTimer" to="." method="_on_magic_sword_timer_timeout"]
+[connection signal="timeout" from="Attack/MagicSwordTimer/MagicSwordAttackTimer" to="." method="_on_magic_sword_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+
+[editable path="HurtBox"]
