@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://do0g3jx3dcbic"]
+
+[ext_resource type="Script" path="res://scenes/coin.gd" id="1_ocawy"]
+[ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="2_2023y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ve4h6"]
+
+[node name="Coin" type="Area2D" groups=["loot"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ocawy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2023y")
+region_enabled = true
+region_rect = Rect2(8, 784, 16, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ve4h6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

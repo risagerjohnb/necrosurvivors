@@ -2,10 +2,9 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
-var move_speed : int = 25
-var damage : int = 3
-var hp : int = 10
-@onready var coin = preload("res://scenes/coin.tscn")
+var move_speed : int = 50
+var damage : int = 7
+var hp : int = 20
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 
 func _ready() -> void:
@@ -29,16 +28,9 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 	modulate = "red"
 	blood_animation.play("death")
 	await blood_animation.animation_finished
-	print("rat has taken damage")
+	print("werewolf took damage")
 	if hp <= 0:
-		spawn_coin()
 		blood_animation.visible = true
 		blood_animation.play("death")
 		await blood_animation.animation_finished
 		self.queue_free()
-
-func spawn_coin():
-	print("coin spawned")
-	var coin_instantiate = coin.instantiate()
-	coin_instantiate.position = position
-	get_parent().add_child(coin_instantiate)

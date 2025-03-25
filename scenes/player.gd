@@ -28,10 +28,19 @@ var lightning_level : int = 1
 
 var enemy_close = []
 
+var count : int = 0
+@onready var money_label: Label = $MoneyLabel
+
+
 func _ready() -> void:
 	hp_bar.max_value = max_hp
 	hp_bar.value = hp
 	attack()
+
+func add_coin():
+	count += 1
+	if money_label:
+		money_label.text = "Coins: " + str(count)
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -117,7 +126,7 @@ func _on_lightning_timer_timeout() -> void:
 func _on_lightning_timer_attack_timer_timeout() -> void:
 	if lightning_ammo > 0:
 		var lightning_attack = lightning.instantiate()
-		lightning_attack.position = enemy_close.pick_random().global_position
+		lightning_attack.position = get_random_target()
 		lightning_attack.target = get_random_target()
 		lightning_attack.level = lightning_level
 		add_child(lightning_attack)

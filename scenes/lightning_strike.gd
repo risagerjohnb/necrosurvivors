@@ -11,6 +11,7 @@ var target = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
+
 func _ready() -> void:
 	match level:
 		1:
@@ -35,4 +36,8 @@ func enemy_hit(charge = 1):
 		queue_free()
 
 func _on_timer_timeout() -> void:
+	queue_free()
+
+
+func _on_lightning_strike_spawn_timer_timeout() -> void:
 	queue_free()

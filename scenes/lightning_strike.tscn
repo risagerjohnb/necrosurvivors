@@ -95,4 +95,8 @@ metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="LightningStrikeSpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LightningStrikeSpawnTimer" to="." method="_on_lightning_strike_spawn_timer_timeout"]
