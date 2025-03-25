@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dldndp6p5oxdi"]
+[gd_scene load_steps=5 format=3 uid="uid://dldndp6p5oxdi"]
 
 [ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="1_nrgk7"]
+[ext_resource type="Script" path="res://scenes/upgrade.gd" id="1_oltyg"]
 [ext_resource type="Texture2D" uid="uid://dee8yn7xf0mi2" path="res://assets/Spritesheets/Eletric A-Sheet.png" id="2_6s2td"]
 [ext_resource type="Texture2D" uid="uid://dw1mfs52rdyou" path="res://assets/32rogues-0.5.0/32rogues/animals.png" id="3_qnu1k"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oltyg")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -37,20 +39,20 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel/HBoxContainer"]
+[node name="MagicSword" type="Sprite2D" parent="Panel/HBoxContainer"]
 position = Vector2(112, 75)
 scale = Vector2(2, 2)
 texture = ExtResource("1_nrgk7")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Panel/HBoxContainer"]
+[node name="Lightning" type="Sprite2D" parent="Panel/HBoxContainer"]
 position = Vector2(347, 66)
 texture = ExtResource("2_6s2td")
 region_enabled = true
 region_rect = Rect2(32, 0, 48, 88)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Panel/HBoxContainer"]
+[node name="Monkey" type="Sprite2D" parent="Panel/HBoxContainer"]
 modulate = Color(0.568627, 1, 0.2, 1)
 position = Vector2(568, 59)
 scale = Vector2(2, 2)
