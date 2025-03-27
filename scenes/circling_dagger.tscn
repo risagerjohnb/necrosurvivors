@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbit57ypyirfu"]
+
+[ext_resource type="Script" path="res://circling_dagger.gd" id="1_424jx"]
+[ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="2_ab2lf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6k7w"]
+radius = 16.0
+
+[node name="CirclingDagger" type="Area2D" groups=["attack"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_424jx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ab2lf")
+region_enabled = true
+region_rect = Rect2(232, 8, 24, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_l6k7w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

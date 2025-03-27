@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dldndp6p5oxdi"]
+[gd_scene load_steps=4 format=3 uid="uid://dldndp6p5oxdi"]
 
 [ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="1_nrgk7"]
 [ext_resource type="Script" path="res://scenes/upgrade.gd" id="1_oltyg"]
 [ext_resource type="Texture2D" uid="uid://dee8yn7xf0mi2" path="res://assets/Spritesheets/Eletric A-Sheet.png" id="2_6s2td"]
-[ext_resource type="Texture2D" uid="uid://dw1mfs52rdyou" path="res://assets/32rogues-0.5.0/32rogues/animals.png" id="3_qnu1k"]
 
 [node name="Upgrade" type="Control"]
 layout_mode = 3
@@ -29,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="Sprites" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,28 +38,107 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MagicSword" type="Sprite2D" parent="Panel/HBoxContainer"]
-position = Vector2(112, 75)
+[node name="MagicSword" type="Sprite2D" parent="Panel/Sprites"]
+position = Vector2(112, 74)
 scale = Vector2(2, 2)
 texture = ExtResource("1_nrgk7")
 region_enabled = true
 region_rect = Rect2(320, 0, 32, 32)
 
-[node name="Lightning" type="Sprite2D" parent="Panel/HBoxContainer"]
-position = Vector2(347, 66)
+[node name="Lightning" type="Sprite2D" parent="Panel/Sprites"]
+position = Vector2(347, 70)
 texture = ExtResource("2_6s2td")
 region_enabled = true
 region_rect = Rect2(32, 0, 48, 88)
 
-[node name="Monkey" type="Sprite2D" parent="Panel/HBoxContainer"]
-modulate = Color(0.568627, 1, 0.2, 1)
-position = Vector2(568, 59)
+[node name="CirclingDagger" type="Sprite2D" parent="Panel/Sprites"]
+position = Vector2(568, 78)
 scale = Vector2(2, 2)
-texture = ExtResource("3_qnu1k")
+texture = ExtResource("1_nrgk7")
 region_enabled = true
-region_rect = Rect2(128, 64, 32, 32)
+region_rect = Rect2(232, 8, 24, 24)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MSDetails" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 175.0
+offset_right = 185.0
+offset_bottom = 294.0
+theme_override_constants/separation = 25
+
+[node name="charge_label" type="Label" parent="Panel/MSDetails"]
+layout_mode = 2
+text = "charge 1 > 2"
+
+[node name="speed_label" type="Label" parent="Panel/MSDetails"]
+layout_mode = 2
+text = "speed 100 > 110"
+
+[node name="damage_label" type="Label" parent="Panel/MSDetails"]
+layout_mode = 2
+text = "damage 5 > 7"
+
+[node name="LSDetails" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 174.0
+offset_right = 403.0
+offset_bottom = 293.0
+theme_override_constants/separation = 25
+
+[node name="charge_label" type="Label" parent="Panel/LSDetails"]
+layout_mode = 2
+text = "charge 1 > 2"
+
+[node name="speed_label" type="Label" parent="Panel/LSDetails"]
+layout_mode = 2
+text = "speed 100 > 110"
+
+[node name="damage_label" type="Label" parent="Panel/LSDetails"]
+layout_mode = 2
+text = "damage 5 > 7"
+
+[node name="CDDetails" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 174.0
+offset_right = 632.0
+offset_bottom = 293.0
+theme_override_constants/separation = 25
+
+[node name="charge_label" type="Label" parent="Panel/CDDetails"]
+layout_mode = 2
+text = "charge 1 > 2"
+
+[node name="speed_label" type="Label" parent="Panel/CDDetails"]
+layout_mode = 2
+text = "speed 100 > 110"
+
+[node name="damage_label" type="Label" parent="Panel/CDDetails"]
+layout_mode = 2
+text = "damage 5 > 7"
+
+[node name="Sprite_titles" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 638.0
+offset_bottom = 50.0
+theme_override_constants/separation = 115
+
+[node name="MS_title" type="Label" parent="Panel/Sprite_titles"]
+layout_mode = 2
+text = "Magic Sword"
+
+[node name="LS_title" type="Label" parent="Panel/Sprite_titles"]
+layout_mode = 2
+text = "Lightning Strike"
+
+[node name="CD_title" type="Label" parent="Panel/Sprite_titles"]
+layout_mode = 2
+text = "Circling Dagger"
+
+[node name="UpgradeButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,14 +153,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 150
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="MS_upgrade_btn" type="Button" parent="UpgradeButtons"]
 layout_mode = 2
 text = "Upgrade"
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="LS_upgrade_btn" type="Button" parent="UpgradeButtons"]
 layout_mode = 2
 text = "Upgrade"
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
+[node name="CD_upgrade_btn" type="Button" parent="UpgradeButtons"]
 layout_mode = 2
 text = "Upgrade"

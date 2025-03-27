@@ -26,16 +26,32 @@ var lightning_baseammo : int = 1
 var lightning_attackspeed : float = 1.5
 var lightning_level : int = 1
 
+var monkey = preload("res://scenes/monkey.tscn")
+
+@onready var monkey_timer: Timer = $Attack/MonkeyTimer
+@onready var monkey_attack_timer: Timer = $Attack/MonkeyTimer/MonkeyAttackTimer
+
+var monkey_spawn_amount : int = 0
+var monkey_base_spawn_amount : int = 1
+var monkey_attackspeed : float = 1.5
+var monkey_level : int = 1
+var current_monkey = null
+
 var enemy_close = []
 
 var count : int = 0
-@onready var money_label: Label = $MoneyLabel
+@onready var money_label: Label = $Camera2D/MoneyLabel
 
+var circling_dagger = preload("res://scenes/circling_dagger.tscn")
+var circling_dagger_instance = null
 
 func _ready() -> void:
+	money_label.text = "Coins: "
 	hp_bar.max_value = max_hp
 	hp_bar.value = hp
 	attack()
+	circling_dagger_instance = circling_dagger.instantiate()
+	add_child(circling_dagger_instance)
 
 func add_coin():
 	count += 1
@@ -69,6 +85,9 @@ func attack():
 		if lightning_timer.is_stopped():
 			lightning_timer.start()
 
+func _process(delta: float) -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	var direction := Vector2.ZERO
 	
@@ -91,11 +110,13 @@ func _physics_process(delta: float) -> void:
 	elif direction.x < 0:
 		sprite_2d.flip_h = false
 
+func circling_dagger_attack():
+	pass
+
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
 	hp -= damage
 	hp_bar.value = hp
-	print(hp)
 
 
 func _on_magic_sword_timer_timeout() -> void:
@@ -130,7 +151,6 @@ func _on_lightning_timer_attack_timer_timeout() -> void:
 		lightning_attack.target = get_random_target()
 		lightning_attack.level = lightning_level
 		add_child(lightning_attack)
-		print("strike!")
 		lightning_ammo -= 1
 		if lightning_ammo > 0:
 			lightning_timer_attack_timer.start()

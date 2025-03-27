@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhil00oac4yux"]
+
+[ext_resource type="Script" path="res://scenes/un_killable_boss.gd" id="1_0blhq"]
+[ext_resource type="Texture2D" uid="uid://dbpo5esnguspi" path="res://assets/32rogues-0.5.0/32rogues/monsters.png" id="1_871b6"]
+[ext_resource type="PackedScene" uid="uid://bce8wv70ct6us" path="res://scenes/Utility/hurt_box.tscn" id="2_v8q1g"]
+[ext_resource type="PackedScene" uid="uid://cbtsk01mnm2ow" path="res://scenes/Utility/hit_box.tscn" id="3_dowe1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nragd"]
+radius = 67.2681
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwx0k"]
+radius = 77.026
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtnah"]
+radius = 52.0
+
+[node name="UnKillableBoss" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_0blhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nragd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_871b6")
+region_enabled = true
+region_rect = Rect2(96, 128, 32, 32)
+
+[node name="HurtBox" parent="." instance=ExtResource("2_v8q1g")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_lwx0k")
+debug_color = Color(0.976087, 0.0317203, 0.390637, 0.42)
+
+[node name="HitBox" parent="." instance=ExtResource("3_dowe1")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_xtnah")
+debug_color = Color(0.909149, 0.297994, 0.0343942, 0.42)
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

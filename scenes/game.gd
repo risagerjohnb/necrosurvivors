@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var timer: Timer = $Timer
-@onready var timer_label: Label = $Player/TimerLabel
+@onready var timer_label: Label = $Player/Camera2D/TimerLabel
 
 
 # Called when the node enters the scene tree for the first time.
