@@ -29,6 +29,7 @@ enemy=""
 player=""
 attack=""
 loot=""
+magic_sword=""
 
 [input]
 

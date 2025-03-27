@@ -1,0 +1,157 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwn5f0chkl28l"]
+
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_1s830"]
+[ext_resource type="AudioStream" uid="uid://dq4cmmfbilf1" path="res://assets/music and sounds/select.wav" id="2_1d7xa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0e61"]
+bg_color = Color(0.294797, 0.623037, 0.912278, 1)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1s830")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a0e61")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -11.5
+offset_right = 62.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You died, now what?"
+
+[node name="Label2" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 385.5
+offset_top = 243.0
+offset_right = 547.5
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Its right over here lol"
+
+[node name="Label3" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -291.0
+offset_right = 120.5
+offset_bottom = -268.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enough trolling its actually up here"
+
+[node name="Label4" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -129.0
+offset_right = 144.0
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "YOU ARE NEVER LEAVING THIS PLACE"
+
+[node name="Label5" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 119.0
+offset_right = 13.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Oh..."
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 350.0
+offset_right = 618.0
+offset_bottom = 381.0
+text = "Restart"
+
+[node name="Button2" type="Button" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 946.0
+offset_top = 608.0
+offset_right = 1138.0
+offset_bottom = 639.0
+text = "The Real Restart Button"
+
+[node name="Button3" type="Button" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 467.0
+offset_top = 69.0
+offset_right = 659.0
+offset_bottom = 100.0
+text = "The Button to restart"
+
+[node name="_restart_btn" type="Button" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 108.0
+offset_top = 516.0
+offset_right = 929.0
+offset_bottom = 547.0
+text = "_restart_btn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1d7xa")
+bus = &"sfx"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/Button3" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/_restart_btn" to="." method="_on__restart_btn_pressed"]
+[connection signal="pressed" from="Panel/_restart_btn" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

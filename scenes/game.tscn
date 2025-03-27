@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://scenes/Utility/spawn_info.gd" id="4_lh1eb"]
 [ext_resource type="PackedScene" uid="uid://7vmdcinvhfvo" path="res://scenes/wolf.tscn" id="6_jfl78"]
 [ext_resource type="PackedScene" uid="uid://ccqdcm22fa844" path="res://scenes/werewolf.tscn" id="8_4h5nb"]
-[ext_resource type="PackedScene" uid="uid://bhil00oac4yux" path="res://scenes/un_killable_boss.tscn" id="9_1cpuj"]
+[ext_resource type="PackedScene" uid="uid://bhil00oac4yux" path="res://scenes/un_killable_boss.tscn" id="9_c0q48"]
 [ext_resource type="PackedScene" uid="uid://dldndp6p5oxdi" path="res://scenes/upgrade.tscn" id="10_30da2"]
-[ext_resource type="PackedScene" uid="uid://dpuculxjeajlh" path="res://scenes/exp.tscn" id="11_0qrof"]
+[ext_resource type="AudioStream" uid="uid://ybjc6s0m3wsu" path="res://assets/music and sounds/WE Light Wind Whistle 3.wav" id="13_1po65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xwxu"]
 texture = ExtResource("1_ht03r")
@@ -217,37 +217,37 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_0xwxu")
 sources/1 = SubResource("TileSetAtlasSource_f8smu")
 
-[sub_resource type="Resource" id="Resource_s2fxf"]
-script = ExtResource("4_lh1eb")
-time_start = 10
-time_end = 60
-enemy = ExtResource("6_jfl78")
-enemy_num = 1
-enemy_spawn_delay = 1
-
 [sub_resource type="Resource" id="Resource_v6xcb"]
 script = ExtResource("4_lh1eb")
 time_start = 0
-time_end = 60
+time_end = 30
 enemy = ExtResource("2_sufuk")
-enemy_num = 5
-enemy_spawn_delay = 2
+enemy_num = 10
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_s2fxf"]
+script = ExtResource("4_lh1eb")
+time_start = 15
+time_end = 60
+enemy = ExtResource("6_jfl78")
+enemy_num = 4
+enemy_spawn_delay = 1
 
 [sub_resource type="Resource" id="Resource_tr0wk"]
 script = ExtResource("4_lh1eb")
-time_start = 20
+time_start = 30
 time_end = 60
 enemy = ExtResource("8_4h5nb")
 enemy_num = 3
-enemy_spawn_delay = 1
+enemy_spawn_delay = 2
 
-[sub_resource type="Resource" id="Resource_0upgr"]
+[sub_resource type="Resource" id="Resource_84cao"]
 script = ExtResource("4_lh1eb")
-time_start = 0
-time_end = 2
-enemy = ExtResource("9_1cpuj")
+time_start = 45
+time_end = 46
+enemy = ExtResource("9_c0q48")
 enemy_num = 1
-enemy_spawn_delay = 0
+enemy_spawn_delay = 1
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fty2n")
@@ -264,7 +264,7 @@ process_callback = 0
 wait_time = 60.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_wf7dq")]
-spawns = Array[ExtResource("4_lh1eb")]([SubResource("Resource_s2fxf"), SubResource("Resource_v6xcb"), SubResource("Resource_tr0wk"), SubResource("Resource_0upgr")])
+spawns = Array[ExtResource("4_lh1eb")]([SubResource("Resource_v6xcb"), SubResource("Resource_s2fxf"), SubResource("Resource_tr0wk"), SubResource("Resource_84cao")])
 
 [node name="Player" parent="." instance=ExtResource("2_5vtme")]
 position = Vector2(2255, 783)
@@ -288,12 +288,19 @@ offset_bottom = -214.0
 [node name="Upgrade" parent="Player/Camera2D" index="2" instance=ExtResource("10_30da2")]
 visible = false
 
-[node name="EXP" parent="Player/Camera2D" index="3" instance=ExtResource("11_0qrof")]
-offset_left = -6.0
-offset_top = 263.0
-offset_right = -6.0
-offset_bottom = 263.0
-size_flags_vertical = 8
+[node name="Loot" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1po65")
+autoplay = true
+bus = &"music"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2184.0
+offset_top = 664.0
+offset_right = 2347.0
+offset_bottom = 687.0
+text = "you will not survive..."
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="2_2023y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ve4h6"]
+radius = 16.0
 
 [node name="Coin" type="Area2D" groups=["loot"]]
 collision_layer = 2
@@ -13,10 +14,12 @@ script = ExtResource("1_ocawy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2023y")
 region_enabled = true
-region_rect = Rect2(8, 784, 16, 8)
+region_rect = Rect2(104, 776, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ve4h6")
+
+[node name="snd_collected" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

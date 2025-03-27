@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ck464tjnnoctv"
+path="res://.godot/imported/ghostScream3.wav-73936fd232a8471eb0c7dfe7a5585676.sample"
+
+[deps]
+
+source_file="res://assets/music and sounds/ghostScream3.wav"
+dest_files=["res://.godot/imported/ghostScream3.wav-73936fd232a8471eb0c7dfe7a5585676.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

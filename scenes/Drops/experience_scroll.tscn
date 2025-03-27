@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8ustw4jpa6d"]
+
+[ext_resource type="Script" path="res://scenes/Drops/experience_scroll.gd" id="1_ce7kw"]
+[ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="2_dj0s1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jitij"]
+radius = 22.0227
+
+[node name="ExperienceScroll" type="Area2D" groups=["loot"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ce7kw")
+
+[node name="Tier1Scroll" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_dj0s1")
+region_enabled = true
+region_rect = Rect2(232, 680, 16, 16)
+
+[node name="Tier2Scroll" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_dj0s1")
+region_enabled = true
+region_rect = Rect2(0, 672, 24, 24)
+
+[node name="Tier3Scroll" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_dj0s1")
+region_enabled = true
+region_rect = Rect2(200, 672, 24, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jitij")
+
+[node name="snd_collected" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

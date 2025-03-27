@@ -5,11 +5,16 @@ extends CharacterBody2D
 var move_speed : int = 25
 var damage : int = 3
 var hp : int = 10
+var exp_drop = 4
+@onready var exp_scroll = preload("res://scenes/Drops/experience_scroll.tscn")
+var exp = null
 @onready var coin = preload("res://scenes/coin.tscn")
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 
 func _ready() -> void:
 	blood_animation.visible = false
+	exp = exp_scroll.instantiate()
+	exp.experience = exp_drop
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -35,6 +40,8 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 		blood_animation.visible = true
 		blood_animation.play("death")
 		await blood_animation.animation_finished
+		exp.global_position = position
+		get_parent().add_child(exp)
 		self.queue_free()
 
 func spawn_coin():

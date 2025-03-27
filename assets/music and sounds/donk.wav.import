@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buvwdb34yd6rq"
+path="res://.godot/imported/donk.wav-2e0a233782804a9bd4d859e10a785da7.sample"
+
+[deps]
+
+source_file="res://assets/music and sounds/donk.wav"
+dest_files=["res://.godot/imported/donk.wav-2e0a233782804a9bd4d859e10a785da7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

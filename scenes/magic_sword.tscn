@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c24x23ahfrqjd"]
+[gd_scene load_steps=5 format=3 uid="uid://c24x23ahfrqjd"]
 
 [ext_resource type="Script" path="res://scenes/magic_sword.gd" id="1_ili53"]
 [ext_resource type="Texture2D" uid="uid://in8qinukoobk" path="res://assets/32rogues-0.5.0/32rogues/items.png" id="1_tbung"]
+[ext_resource type="AudioStream" uid="uid://b8qocnmbc3mai" path="res://assets/music and sounds/bloop.wav" id="3_fe67n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ob7m"]
 radius = 4.96646
 height = 31.1022
 
-[node name="MagicSword" type="Area2D" groups=["attack"]]
+[node name="MagicSword" type="Area2D" groups=["attack", "magic_sword"]]
 top_level = true
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
@@ -29,5 +30,9 @@ metadata/_edit_lock_ = true
 wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fe67n")
+bus = &"sfx"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
